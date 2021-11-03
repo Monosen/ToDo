@@ -33,7 +33,6 @@ const Home = () => {
 		handlefecthData();
 	}, []);
 
-	console.log(allList);
 	return (
 		<>
 			<div className="h-48">
