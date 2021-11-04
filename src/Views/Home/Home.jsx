@@ -20,6 +20,19 @@ const Home = () => {
 		}
 	};
 
+	const handleAllListIncomplete = (id) => {
+		if (allList[id - 1].completed) {
+			setAllList(
+				allList.map((item) => {
+					if (id === item.id) {
+						item.completed = false;
+					}
+					return item;
+				})
+			);
+		}
+	};
+
 	const handleItemIncomplete = () => {
 		return allList.some((item) => item.completed === false);
 	};
@@ -64,6 +77,7 @@ const Home = () => {
 							key={item.id}
 							title={item.title}
 							id={item.id}
+							completed={item.completed}
 							handleAllListComplete={handleAllListComplete}
 						/>
 					))
@@ -78,6 +92,7 @@ const Home = () => {
 									handleAllListComplete={handleAllListComplete}
 									completed={item.completed}
 									handleItemListDelete={handleItemListDelete}
+									handleAllListIncomplete={handleAllListIncomplete}
 								/>
 							)
 					)
