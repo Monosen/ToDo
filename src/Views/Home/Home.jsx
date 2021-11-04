@@ -37,6 +37,10 @@ const Home = () => {
 		return allList.some((item) => item.completed === false);
 	};
 
+	const handleItemComplete = () => {
+		return allList.some((item) => item.completed === true);
+	};
+
 	const handleItemListDelete = (id) => {
 		setAllList(allList.filter((item) => item.id !== id));
 	};
@@ -60,9 +64,11 @@ const Home = () => {
 					<button onClick={() => setOption(0)} className="p-4">
 						All
 					</button>
-					<button onClick={() => setOption(1)} className="p-4">
-						Complete
-					</button>
+					{handleItemComplete() && (
+						<button onClick={() => setOption(1)} className="p-4">
+							Complete
+						</button>
+					)}
 					{handleItemIncomplete() && (
 						<button onClick={() => setOption(2)} className="p-4">
 							Incomplete
@@ -78,6 +84,7 @@ const Home = () => {
 							title={item.title}
 							id={item.id}
 							completed={item.completed}
+							handleItemListDelete={handleItemListDelete}
 							handleAllListComplete={handleAllListComplete}
 						/>
 					))
