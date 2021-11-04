@@ -25,7 +25,7 @@ const Home = () => {
 	};
 
 	const handleItemListDelete = (id) => {
-		setAllList(allList.filter((item) => item.id != id));
+		setAllList(allList.filter((item) => item.id !== id));
 	};
 
 	useEffect(() => {
