@@ -21,16 +21,14 @@ const Home = () => {
 	};
 
 	const handleAllListIncomplete = (id) => {
-		if (allList[id - 1].completed) {
-			setAllList(
-				allList.map((item) => {
-					if (id === item.id) {
-						item.completed = false;
-					}
-					return item;
-				})
-			);
-		}
+		setAllList(
+			allList.map((item) => {
+				if (id === item.id) {
+					item.completed = false;
+				}
+				return item;
+			})
+		);
 	};
 
 	const handleItemIncomplete = () => {
@@ -83,9 +81,10 @@ const Home = () => {
 							key={item.id}
 							title={item.title}
 							id={item.id}
+							handleAllListComplete={handleAllListComplete}
 							completed={item.completed}
 							handleItemListDelete={handleItemListDelete}
-							handleAllListComplete={handleAllListComplete}
+							handleAllListIncomplete={handleAllListIncomplete}
 						/>
 					))
 				) : allList?.length > 0 && option === 1 ? (
