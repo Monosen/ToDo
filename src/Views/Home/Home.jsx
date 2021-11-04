@@ -8,18 +8,24 @@ const Home = () => {
 	const [option, setOption] = useState(0);
 
 	const handleAllListComplete = (id) => {
-		setAllList(
-			allList.map((item) => {
-				if (id === item.id) {
-					item.completed = true;
-				}
-				return item;
-			})
-		);
+		if (!allList[id - 1].completed) {
+			setAllList(
+				allList.map((item) => {
+					if (id === item.id) {
+						item.completed = true;
+					}
+					return item;
+				})
+			);
+		}
 	};
 
 	const handleItemIncomplete = () => {
 		return allList.some((item) => item.completed === false);
+	};
+
+	const handleItemListDelete = (id) => {
+		setAllList(allList.filter((item) => item.id != id));
 	};
 
 	useEffect(() => {
@@ -70,6 +76,8 @@ const Home = () => {
 									title={item.title}
 									id={item.id}
 									handleAllListComplete={handleAllListComplete}
+									completed={item.completed}
+									handleItemListDelete={handleItemListDelete}
 								/>
 							)
 					)
@@ -86,7 +94,7 @@ const Home = () => {
 							)
 					)
 				) : (
-					<h2>Arreglo vacio</h2>
+					<h2>Lista Vacio</h2>
 				)}
 			</div>
 		</>
