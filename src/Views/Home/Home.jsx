@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //Components
 import Items from "../../Components/Home/Items";
+import Loader from "../../Components/Custom/Loader/Loader";
 
 const Home = () => {
 	const [allList, setAllList] = useState([]);
@@ -115,7 +116,7 @@ const Home = () => {
 							)
 					)
 				) : (
-					<h2>Lista Vacio</h2>
+					<Loader className="mt-20" />
 				)}
 			</div>
 		</>
