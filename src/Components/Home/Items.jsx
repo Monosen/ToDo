@@ -18,7 +18,7 @@ const Items = ({
 					onClick={() => handleAllListComplete(id)}
 					className="px-5 py-3 bg-black text-white rounded capitalize mt-auto hover:text-black hover:bg-white border-2 border-black font-medium w-32"
 				>
-					completar
+					complete
 				</button>
 			) : (
 				<button
